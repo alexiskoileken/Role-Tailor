@@ -9,9 +9,12 @@ page 50100 "System Administrator"
 
     layout
     {
-        area(Content)
+        area(RoleCenter)
         {
-
+            part(Headline; "RC system Administrator")
+            {
+                ApplicationArea = basic, suite;
+            }
         }
 
     }
@@ -27,6 +30,7 @@ page 50100 "System Administrator"
                     ApplicationArea = basic, suite;
                     RunObject = page "User Groups";
                 }
+
 
             }
         }
@@ -45,5 +49,31 @@ page 50100 "System Administrator"
                 RunObject = page "Concurrent Session List";
             }
         }
+        area(Embedding)
+        {
+            action("Chart Of Acounts")
+            {
+                Caption = 'Chart Of Acounts';
+                ApplicationArea = basic, suite;
+                RunObject = page "Chart of Accounts";
+            }
+            action(customers)
+            {
+                Caption = 'customers';
+                ApplicationArea = basic, suite;
+                RunObject = page "Customer List";
+            }
+        }
+        area(Reporting)
+        {
+            action("Cash Flow")
+            {
+                Caption = 'Cash Flow';
+                ApplicationArea = basic, suite;
+                RunObject = report "Cash Flow Date List";
+            }
+        }
     }
 }
+
+
