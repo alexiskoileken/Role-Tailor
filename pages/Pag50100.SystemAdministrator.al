@@ -66,11 +66,11 @@ page 50100 "System Administrator"
         }
         area(Reporting)
         {
-            action("Cash Flow")
+            action("G/L Registers")
             {
-                Caption = 'Cash Flow';
+                Caption = 'G/L Registers';
                 ApplicationArea = basic, suite;
-                RunObject = report "Cash Flow Date List";
+                RunObject = report "G/L Register";
             }
         }
     }
