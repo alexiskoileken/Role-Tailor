@@ -6,6 +6,7 @@ table 50100 "Admin Cue"
     Caption = 'Admin Cue';
     DataClassification = CustomerContent;
 
+
     fields
     {
         field(1; "No."; Code[20])
@@ -16,6 +17,11 @@ table 50100 "Admin Cue"
         {
             FieldClass = FlowField;
             CalcFormula = count("Active Session" where("Client Type" = const("Web Client")));
+        }
+        field(3; "OpenInvoices"; Integer)
+        {
+            fieldclass = flowfield;
+            CalcFormula = count("Sales Header" where("Document Type" = filter(Invoice), Status = filter(Open)));
         }
 
     }

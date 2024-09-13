@@ -15,6 +15,10 @@ page 50100 "System Administrator"
             {
                 ApplicationArea = basic, suite;
             }
+            part(Cues; "Admin cue")
+            {
+                ApplicationArea = basic, suite;
+            }
         }
 
     }
@@ -22,16 +26,66 @@ page 50100 "System Administrator"
     {
         area(Sections)
         {
-            group("&Users")
+            group("Users Management")
             {
+                Caption = 'Users Management';
                 action(users)
                 {
                     Caption = 'users';
                     ApplicationArea = basic, suite;
+                    RunObject = page Users;
+                }
+                action("Users Group")
+                {
+                    Caption = 'Users Groups';
+                    ApplicationArea = basic, suite;
                     RunObject = page "User Groups";
                 }
+                action("Permission Sets")
+                {
+                    Caption = 'Permission Sets';
+                    ApplicationArea = basic, suite;
+                    RunObject = page "Permission Set";
+                }
+                action(Plans)
+                {
+                    Caption = 'Plans';
+                    ApplicationArea = basic, suite;
+                    RunObject = page Plans;
+                }
 
-
+            }
+            group("App Management")
+            {
+                Caption = 'App Managment';
+                action(apps)
+                {
+                    Caption = 'apps';
+                    ApplicationArea = basic, suite;
+                    RunObject = page "App Setup List";
+                }
+            }
+            group("Data Privacy")
+            {
+                Caption = 'Data Privacy';
+                action("Data Classification")
+                {
+                    Caption = 'Data Classification';
+                    ApplicationArea = basic, suite;
+                    RunObject = page "Data Classification Worksheet";
+                }
+                action("Data Subjects")
+                {
+                    Caption = 'Data Subjects';
+                    ApplicationArea = basic, suite;
+                    RunObject = page "Data Administration";
+                }
+                action("Change Log Entries")
+                {
+                    Caption = 'Change Log Entries';
+                    ApplicationArea = basic, suite;
+                    RunObject = page "Change Log Entries";
+                }
             }
         }
         area(Creation)
