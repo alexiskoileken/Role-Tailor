@@ -19,6 +19,34 @@ page 50100 "System Administrator"
             {
                 ApplicationArea = basic, suite;
             }
+            part(payment; "Acc. Payables Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(userTasks; "User Tasks Activities")
+            {
+                ApplicationArea = suite;
+            }
+            part(EmailStatus; "Email Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(Approval; "Approvals Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(control01; "My Customers")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(control02; "My Vendors")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(control03; "Power BI Report Spinner Part")
+            {
+                ApplicationArea = basic, suite;
+            }
         }
 
     }
