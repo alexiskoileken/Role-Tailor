@@ -33,6 +33,84 @@ page 50102 "Admin cue"
                     DrillDownPageId = "User Time Registers";
                 }
             }
+            cuegroup("User Tasks")
+            {
+                Caption = 'User Tasks';
+                field("Pending User Tasks"; UserTaskMgt.GetMyPendingUserTasksCount())
+                {
+
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Pending User Tasks';
+                    Image = Checklist;
+                    ToolTip = 'Specifies the number of pending tasks that are assigned to you or to a group that you are a member of.';
+                    trigger OnDrillDown()
+                    var
+                        UserTaskList: Page "User Task List";
+                    begin
+                        UserTaskList.SetPageToShowMyPendingUserTasks();
+                        UserTaskList.Run();
+                    end;
+                }
+            }
+            cuegroup(Approvals)
+            {
+                Caption = ' Pending Approvals';
+                field("Requests Sent for Approval"; Rec."Requests Sent for Approval")
+                {
+                    ApplicationArea = basic, suite;
+                    Caption = 'Requests Sent for Approval';
+                    DrillDownPageId = "Approval Entries";
+                }
+                field("Requests to  Approve"; Rec."Requests to  Approve")
+                {
+                    ApplicationArea = basic, suite;
+                    Caption = 'Requests to  Approve';
+                    DrillDownPageId = "Approval Entries";
+                }
+
+            }
+            cuegroup(HyperLinks)
+            {
+                actions
+                {
+                    action(InstaPage)
+                    {
+                        ApplicationArea = basic, suite;
+                        Image = TileBrickCalendar;
+                        trigger OnAction()
+                        var
+                            myInt: Integer;
+                        begin
+                            Hyperlink('https://www.instagram.com/alexis_devr/');
+                        end;
+                    }
+                    action(gmail)
+                    {
+                        ApplicationArea = basic, suite;
+                        Image = TileGreen;
+                        trigger OnAction()
+                        var
+                            myInt: Integer;
+                        begin
+                            Hyperlink('https://mail.google.com/mail/u/0/#inbox');
+                        end;
+
+                    }
+                    action("Purchase invoices")
+                    {
+                        ApplicationArea = basic, suite;
+                        Image = TileCamera;
+                        trigger OnAction()
+                        var
+                            myInt: Integer;
+                        begin
+                            Page.Run(Page::"Purchase Invoice");
+                        end;
+
+                    }
+
+                }
+            }
         }
     }
     actions
@@ -74,4 +152,7 @@ page 50102 "Admin cue"
     begin
         Rec."No Of Minutes Logged On" := Rec.NoOfMinutesLoggedOnUsers()
     end;
+
+    var
+        UserTaskMgt: Codeunit "User Task Management";
 }

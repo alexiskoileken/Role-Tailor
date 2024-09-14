@@ -27,6 +27,22 @@ table 50100 "Admin Cue"
         {
 
         }
+        field(5; "Sales this month"; Decimal)
+        {
+
+        }
+        field(6; "Requests Sent for Approval"; integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Approval Entry" where(Status = const(Created)));
+        }
+        field(7; "Requests to  Approve"; integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count("Approval Entry" where(Status = const(Open), "Approver ID" = const('UserId')));
+            Editable = false;
+        }
+
 
     }
     keys
@@ -51,5 +67,15 @@ table 50100 "Admin Cue"
             UserTimeReg.CalcSums(Minutes);
             MonthlyMinutes := UserTimeReg.Minutes;
         end;
+    end;
+
+    /// <summary>
+    /// GetPendingUserTasks.
+    /// </summary>
+    procedure GetPendingUserTasks()
+    var
+
+    begin
+
     end;
 }
