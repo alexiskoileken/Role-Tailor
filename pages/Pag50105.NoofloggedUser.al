@@ -25,13 +25,12 @@ page 50105 "No of logged User"
     }
     trigger OnOpenPage()
     var
-        LoggedUser: Record "Logged User";
-    begin
-        if not LoggedUser.get() then begin
-            LoggedUser.Init();
-            LoggedUser.Insert();
-        end;
 
+    begin
+        if not rec.Get() then begin
+            rec.Init();
+            Rec.Insert();
+        end;
     end;
 
 }
