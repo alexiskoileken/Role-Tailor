@@ -29,8 +29,22 @@ page 50104 "Hr manager headline"
                 field(item; StrSubstNo(ItemHeadlineQuote, GetItemsSold(), GetQuantityOfItem()))
                 {
                     ApplicationArea = basic, suite;
+                    DrillDownPageId = "Sales Lines";
+                }
+                field(CustomerHeadlineQuote; StrSubstNo(CustomerHeadlineQuote, GetCustomerBiggestSales(), GetCustomerSaleLCY()))
+                {
+                    ApplicationArea = basic, suite;
+                    DrillDown = true;
+                    Editable = false;
+                    trigger OnDrillDown()
+                    var
+                        myInt: Integer;
+                    begin
+                        page.Run(page::"Customer List");
+                    end;
                 }
             }
+
         }
 
     }
@@ -60,6 +74,33 @@ page 50104 "Hr manager headline"
 
     end;
 
+    local procedure GetCustomerBiggestSales() CustomerName: Text
+    var
+        Cust: Record Customer;
+    begin
+        Cust.Reset();
+        Cust.SetCurrentKey("Sales (LCY)");
+        Cust.Ascending(false);
+        if Cust.FindFirst() then begin
+            CustomerName := Cust.Name;
+        end;
+
+    end;
+
+    local procedure GetCustomerSaleLCY() SalesLcy: Decimal
+    var
+        Cust: Record Customer;
+    begin
+        cust.Reset();
+        Cust.SetCurrentKey("Sales (LCY)");
+        Cust.Ascending(false);
+        if Cust.FindFirst() then begin
+            SalesLcy := Cust."Sales (LCY)";
+        end;
+
+
+    end;
+
 
     trigger OnOpenPage()
     var
@@ -74,5 +115,5 @@ page 50104 "Hr manager headline"
         [InDataSet]
         IsGreetings: Boolean;
         ItemHeadlineQuote: Label '<qualifier>Insights From Last Week</qualifier><payload>The best-selling item was <emphasize>%1</emphasize> with <emphasize>%2</emphasize>units sold</payload>';
-
+        CustomerHeadlineQuote: Label '<qualifier>Insights From Last Week</qualifier><payload>Your top Customer was <emphasize>%1</emphasize>, bought for  <emphasize>Kes,%2</emphasize>units sold</payload>';
 }
