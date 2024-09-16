@@ -35,7 +35,7 @@ page 50101 "RC system Administrator"
                     var
                         myInt: Integer;
                     begin
-                        page.Run(page::"Sales Order");
+                        page.Run(page::"Sales Lines");
                     end;
                 }
             }
@@ -65,23 +65,17 @@ page 50101 "RC system Administrator"
         IsGreeting := RCHeadlinesPageCommon.IsUserGreetingVisible();
     end;
 
-    local procedure BiggestSalesOrder(): Decimal
+    local procedure BiggestSalesOrder() BigSalesOrder: Decimal
     var
-        salesOrds: Record "Sales Header";
-        MaxAmount: Decimal;
-        UpperLimit: Decimal;
+        SalesLn: Record "Sales Line";
     begin
-        maxAmount := 0;
-        UpperLimit := 999999999999999.99;
-        salesOrds.Reset();
-        salesOrds.SetRange(Amount, 0, UpperLimit);
-        if salesOrds.FindSet() then begin
-            repeat
-                if salesOrds.Amount > MaxAmount then
-                    MaxAmount := salesOrds.Amount;
-            until salesOrds.Next() = 0;
+        SalesLn.Reset();
+        SalesLn.SetRange("Document Type", SalesLn."Document Type"::Order);
+        SalesLn.SetCurrentKey(Amount);
+        SalesLn.Ascending(false);
+        if SalesLn.FindFirst() then begin
+            BigSalesOrder := SalesLn.Amount;
         end;
-        exit(MaxAmount);
     end;
 
     local procedure GetNoOfUsers(): Integer
