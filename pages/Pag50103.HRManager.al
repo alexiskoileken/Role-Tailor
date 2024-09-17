@@ -15,6 +15,46 @@ page 50103 "HR Manager"
             {
                 ApplicationArea = basic, suite;
             }
+            part(Accounting; "Accountant Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(user; "User Tasks Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(Email; "Email Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(Approval; "Approvals Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(selfservice; "Team Member Activities")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(business; "My Accounts")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(BusinessPerfomance; "Help And Chart Wrapper")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(CashFlow; "Cash Flow Forecast Chart")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(ReportInbox; "Report Inbox Part")
+            {
+                ApplicationArea = basic, suite;
+            }
+            part(PowerBi; "Power BI Embedded Report Part")
+            {
+                ApplicationArea = basic, suite;
+            }
         }
     }
     actions
