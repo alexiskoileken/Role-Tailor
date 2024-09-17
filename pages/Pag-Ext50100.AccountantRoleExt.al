@@ -23,7 +23,7 @@ pageextension 50100 "Accountant Role Ext" extends "Accountant Role Center"
     }
     actions
     {
-        addafter(Intrastat)
+        addafter(Action1020012)
         {
             action(sales)
             {

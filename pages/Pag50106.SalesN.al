@@ -35,6 +35,13 @@ page 50106 "Sales N"
                 SubPageLink = "sales line " = field("Sales N");
             }
         }
+        area(FactBoxes)
+        {
+            systempart(notes; Notes)
+            {
+                ApplicationArea = basic, suite;
+            }
+        }
 
     }
 
