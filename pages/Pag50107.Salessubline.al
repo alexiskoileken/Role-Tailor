@@ -14,6 +14,7 @@ page 50107 Salessubline
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = all;
+                    TableRelation = "Sales Line" where("Document Type" = const(Order));
 
                 }
                 field(name; Rec.name)
