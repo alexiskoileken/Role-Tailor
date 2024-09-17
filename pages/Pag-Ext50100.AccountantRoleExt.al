@@ -19,6 +19,19 @@ pageextension 50100 "Accountant Role Ext" extends "Accountant Role Center"
 
             }
         }
+
+    }
+    actions
+    {
+        addafter(Intrastat)
+        {
+            action(sales)
+            {
+                Caption = 'Sales';
+                ApplicationArea = basic, suite;
+                RunObject = page "Sales N";
+            }
+        }
     }
 
 }
